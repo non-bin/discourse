@@ -136,7 +136,10 @@ module.exports = function (defaults) {
     staticAppPaths: ["static"],
     packagerOptions: {
       webpackConfig: {
-        devtool: "source-map",
+        devtool:
+          process.env.CHEAP_SOURCE_MAPS === "1"
+            ? "cheap-source-map"
+            : "source-map",
         output: {
           publicPath: "auto",
           filename: `assets/chunk.[chunkhash].${cachebusterHash}.js`,
