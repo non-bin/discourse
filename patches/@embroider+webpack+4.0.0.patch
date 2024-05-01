@@ -1,0 +1,13 @@
+diff --git a/node_modules/@embroider/webpack/src/ember-webpack.js b/node_modules/@embroider/webpack/src/ember-webpack.js
+index fa14452..ec3cc70 100644
+--- a/node_modules/@embroider/webpack/src/ember-webpack.js
++++ b/node_modules/@embroider/webpack/src/ember-webpack.js
+@@ -265,7 +265,7 @@ const Webpack = (_a = class Webpack {
+             return (this.lastWebpack = (0, webpack_1.default)(config));
+         }
+         async writeScript(script, written, variant) {
+-            if (!variant.optimizeForProduction) {
++            if (true) {
+                 this.copyThrough(script);
+                 return script;
+             }
