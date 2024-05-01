@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../discourse_automation_helper"
-
 describe "StalledWiki" do
   fab!(:topic_1) { Fabricate(:topic) }
   fab!(:automation) { Fabricate(:automation, trigger: DiscourseAutomation::Triggers::STALLED_WIKI) }

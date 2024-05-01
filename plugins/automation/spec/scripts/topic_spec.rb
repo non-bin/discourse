@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../discourse_automation_helper"
-
 describe "Topic" do
   let!(:raw) { "this is me testing a new topic by automation" }
   let!(:title) { "This is a new topic created by automation" }

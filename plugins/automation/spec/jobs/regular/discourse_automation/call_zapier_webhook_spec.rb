@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../discourse_automation_helper"
-
 describe Jobs::DiscourseAutomation::CallZapierWebhook do
   before do
     SiteSetting.discourse_automation_enabled = true

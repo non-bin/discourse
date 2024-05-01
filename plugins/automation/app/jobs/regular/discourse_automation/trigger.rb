@@ -18,11 +18,12 @@ module Jobs
     end
 
     def execute(args)
-      automation = DiscourseAutomation::Automation.find_by(id: args[:automation_id], enabled: true)
+      automation =
+        ::DiscourseAutomation::Automation.find_by(id: args[:automation_id], enabled: true)
 
       return if !automation
 
-      context = DiscourseAutomation::Automation.deserialize_context(args[:context])
+      context = ::DiscourseAutomation::Automation.deserialize_context(args[:context])
 
       automation.running_in_background!
       automation.trigger!(context)

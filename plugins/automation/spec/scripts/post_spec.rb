@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../discourse_automation_helper"
-
 describe "Post" do
   fab!(:topic_1) { Fabricate(:topic) }
   let!(:raw) { "this is me testing a post" }

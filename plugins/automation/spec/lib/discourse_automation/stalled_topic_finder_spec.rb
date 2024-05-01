@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../discourse_automation_helper"
-
 describe DiscourseAutomation::StalledTopicFinder do
   fab!(:user) { Fabricate(:user, refresh_auto_groups: true) }
 

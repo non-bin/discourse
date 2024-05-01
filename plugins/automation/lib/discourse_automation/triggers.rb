@@ -4,7 +4,7 @@ module DiscourseAutomation
   module Triggers
     AFTER_POST_COOK = "after_post_cook"
     API_CALL = "api_call"
-    CATEGORY_CREATED_EDITED = "category_created_edited"
+    # CATEGORY_CREATED_EDITED = "category_created_edited"
     PM_CREATED = "pm_created"
     POINT_IN_TIME = "point_in_time"
     POST_CREATED_EDITED = "post_created_edited"

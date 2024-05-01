@@ -5,9 +5,9 @@ module Jobs
     every 1.hour
 
     def execute(_args = nil)
-      name = DiscourseAutomation::Triggers::STALLED_TOPIC
+      name = ::DiscourseAutomation::Triggers::STALLED_TOPIC
 
-      DiscourseAutomation::Automation
+      ::DiscourseAutomation::Automation
         .where(trigger: name, enabled: true)
         .find_each do |automation|
           fields = automation.serialized_fields
@@ -30,7 +30,7 @@ module Jobs
 
     def run_trigger(automation, topic)
       automation.trigger!(
-        "kind" => DiscourseAutomation::Triggers::STALLED_TOPIC,
+        "kind" => ::DiscourseAutomation::Triggers::STALLED_TOPIC,
         "topic" => topic,
         "placeholders" => {
           "topic_url" => topic.url,
