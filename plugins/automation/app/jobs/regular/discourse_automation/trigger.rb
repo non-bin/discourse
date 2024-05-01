@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class DiscourseAutomationTrigger < ::Jobs::Base
+  class DiscourseAutomation::Trigger < ::Jobs::Base
     RETRY_TIMES = [5.minute, 15.minute, 120.minute]
 
     sidekiq_options retry: RETRY_TIMES.size

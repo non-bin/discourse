@@ -43,7 +43,7 @@ describe "UserGlobalNotice" do
     it "creates and destroy global notices" do
       post = Fabricate(:post, created_at: 1.day.ago)
 
-      expect { Jobs::StalledTopicTracker.new.execute }.to change {
+      expect { Jobs::DiscourseAutomation::StalledTopicTracker.new.execute }.to change {
         DiscourseAutomation::UserGlobalNotice.count
       }.by(1)
 

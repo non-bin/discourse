@@ -18,7 +18,7 @@ describe "ZapierWebhook" do
 
     it "enqueues the zapier call" do
       expect { automation.trigger! }.to change {
-        Jobs::DiscourseAutomationCallZapierWebhook.jobs.length
+        Jobs::DiscourseAutomation::CallZapierWebhook.jobs.length
       }.by(1)
     end
   end
@@ -33,7 +33,7 @@ describe "ZapierWebhook" do
 
     it "logs an error and do nothing" do
       expect { automation.trigger! }.not_to change {
-        Jobs::DiscourseAutomationCallZapierWebhook.jobs.length
+        Jobs::DiscourseAutomation::CallZapierWebhook.jobs.length
       }
 
       expect(Rails.logger.warnings.first).to match(/is not a valid Zapier/)

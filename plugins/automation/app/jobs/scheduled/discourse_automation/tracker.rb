@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class DiscourseAutomationTracker < ::Jobs::Scheduled
+  class DiscourseAutomation::Tracker < ::Jobs::Scheduled
     every 1.minute
 
     BATCH_LIMIT ||= 300

@@ -43,7 +43,7 @@ describe DiscourseAutomation::Automation do
 
     it "runs a sidekiq job to trigger it" do
       expect { automation.trigger!({ val: "Howdy!" }) }.to change {
-        Jobs::DiscourseAutomationTrigger.jobs.size
+        Jobs::DiscourseAutomation::Trigger.jobs.size
       }.by(1)
     end
   end

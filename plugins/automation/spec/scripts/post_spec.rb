@@ -31,7 +31,7 @@ describe "Post" do
     it "creates expected post" do
       freeze_time 6.hours.from_now do
         expect {
-          Jobs::DiscourseAutomationTracker.new.execute
+          Jobs::DiscourseAutomation::Tracker.new.execute
 
           expect(topic_1.posts.last.raw).to eq(raw)
         }.to change { topic_1.posts.count }.by(1)
@@ -43,7 +43,7 @@ describe "Post" do
 
       it "does nothing and does not error" do
         freeze_time 6.hours.from_now do
-          expect { Jobs::DiscourseAutomationTracker.new.execute }.not_to change { Post.count }
+          expect { Jobs::DiscourseAutomation::Tracker.new.execute }.not_to change { Post.count }
         end
       end
     end

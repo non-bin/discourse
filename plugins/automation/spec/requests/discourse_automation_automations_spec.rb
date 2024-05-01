@@ -70,7 +70,7 @@ describe DiscourseAutomation::AdminAutomationsController do
                }
 
           expect(response.status).to eq(200)
-          expect(Jobs::DiscourseAutomationTrigger.jobs.size).to eq(1)
+          expect(Jobs::DiscourseAutomation::Trigger.jobs.size).to eq(1)
         end
       end
     end

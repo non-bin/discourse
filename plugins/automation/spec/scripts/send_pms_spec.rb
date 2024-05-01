@@ -42,7 +42,7 @@ describe "SendPms" do
 
     it "creates expected PM" do
       expect {
-        Jobs::StalledWikiTracker.new.execute(nil)
+        Jobs::DiscourseAutomation::StalledWikiTracker.new.execute(nil)
 
         post = Post.last
         expect(post.topic.title).to eq("A message from #{Discourse.system_user.username}")

@@ -2,7 +2,7 @@
 
 require_relative "../discourse_automation_helper"
 
-describe Jobs::DiscourseAutomationCallZapierWebhook do
+describe Jobs::DiscourseAutomation::CallZapierWebhook do
   before do
     SiteSetting.discourse_automation_enabled = true
     freeze_time
@@ -21,7 +21,7 @@ describe Jobs::DiscourseAutomationCallZapierWebhook do
 
     expect do
       6.times do
-        Jobs.enqueue(:discourse_automation_call_zapier_webhook, webhook_url: "https://foo.com")
+        Jobs.enqueue(Jobs::DiscourseAutomation::CallZapierWebhook, webhook_url: "https://foo.com")
       end
     end.to raise_error(RateLimiter::LimitExceeded)
   end

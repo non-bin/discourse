@@ -40,7 +40,7 @@ describe "Topic" do
     it "creates expected topic" do
       freeze_time 6.hours.from_now do
         expect {
-          Jobs::DiscourseAutomationTracker.new.execute
+          Jobs::DiscourseAutomation::Tracker.new.execute
 
           topic = Topic.last
           expect(topic.category.id).to eq(category.id)

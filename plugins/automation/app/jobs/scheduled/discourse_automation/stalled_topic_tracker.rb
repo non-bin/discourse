@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class StalledTopicTracker < ::Jobs::Scheduled
+  class DiscourseAutomation::StalledTopicTracker < ::Jobs::Scheduled
     every 1.hour
 
     def execute(_args = nil)
