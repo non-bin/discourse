@@ -145,6 +145,9 @@ module.exports = function (defaults) {
           filename: `assets/chunk.[chunkhash].${cachebusterHash}.js`,
           chunkFilename: `assets/chunk.[chunkhash].${cachebusterHash}.js`,
         },
+        optimization: {
+          minimize: false,
+        },
         cache: isProduction
           ? false
           : {
