@@ -54,7 +54,7 @@ module.exports = function (defaults) {
     },
 
     "ember-cli-terser": {
-      enabled: false,
+      enabled: isProduction,
       exclude: ["**/highlightjs/*", "**/javascripts/*"],
     },
 

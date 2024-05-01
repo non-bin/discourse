@@ -42,7 +42,7 @@ module.exports = {
     ) {
       this._sameOutputCount++;
     } else {
-      process.stderr.write("..." + (text ? `[${text}]` : ".") + "\n");
+      this.project.ui.writeInfoLine("..." + (text ? `[${text}]` : "."));
       this._sameOutputCount = 0;
     }
     this._lastText = text;
