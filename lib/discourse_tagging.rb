@@ -448,7 +448,7 @@ module DiscourseTagging
       if opts[:order_popularity]
         "DISTINCT ON (#{topic_count_column}, name)"
       elsif opts[:order_search_results] && opts[:term].present?
-        "DISTINCT ON (lower(name) = lower(:cleaned_term), #{topic_count_column}, name)"
+        "DISTINCT ON (lower(name) = lower(:term), #{topic_count_column}, name)"
       else
         ""
       end
@@ -509,17 +509,15 @@ module DiscourseTagging
 
     term = opts[:term]
     if term.present?
-      term = term.gsub("_", "\\_").downcase
-      builder_params[:cleaned_term] = term
+      builder_params[:term] = term
 
       if opts[:term_type] == DiscourseTagging.term_types[:starts_with]
-        builder_params[:term] = "#{term}%"
+        builder.where("starts_with(LOWER(name), LOWER(:term))")
+        sql.gsub!("/*and_name_like*/", "AND starts_with(LOWER(t.name), LOWER(:term)")
       else
-        builder_params[:term] = "%#{term}%"
+        builder.where("position(LOWER(:term) IN LOWER(name)) <> 0")
+        sql.gsub!("/*and_name_like*/", "AND position(:term IN LOWER(t.name)) <> 0")
       end
-
-      builder.where("LOWER(name) LIKE :term")
-      sql.gsub!("/*and_name_like*/", "AND LOWER(t.name) LIKE :term")
     else
       sql.gsub!("/*and_name_like*/", "")
     end
@@ -602,7 +600,7 @@ module DiscourseTagging
     if opts[:order_popularity]
       builder.order_by("#{topic_count_column} DESC, name")
     elsif opts[:order_search_results] && !term.blank?
-      builder.order_by("lower(name) = lower(:cleaned_term) DESC, #{topic_count_column} DESC, name")
+      builder.order_by("lower(name) = lower(:term) DESC, #{topic_count_column} DESC, name")
     end
 
     result = builder.query(builder_params).uniq { |t| t.id }
